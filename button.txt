@@ -1,0 +1,41 @@
+#the regular trinket does not support tkinter anymore.
+#the version of trinket that does is on the site: https://trinket.io/features/pygame
+from tkinter import*
+#import mainButton
+#import buttonClass
+
+root = Tk()
+w = 500#this will be the width of my canvas
+h = 650#this will be the height of my canvas
+Font = ("Courier", 20)#this is how the font will look like on the buttons and text box
+
+
+canvas = Canvas(root,height=h,width=w,bg='#454745')#create canvas to put calculator frame inside
+canvas.pack()
+
+mainFrame = Frame(canvas,bg='#c1d2f5')#this is the calculator frame
+mainFrame.place(relx=0.05,rely=0.04,relwidth=0.9,relheight=0.85)
+
+buttonNumber=1 #this is an index counter for the buttons so we can identify differnt buttons
+
+#setting initial point
+Xo=0.02 #this is relx of first button
+Yo=0.05 #this is rely of first button
+diff=0.2525 #this is the sum of width of each button and gap between consecutive buttons
+
+def makeButton(n):
+  global buttonNumber
+  myButton='button'+str(n)
+  myButton=Button(mainFrame,text='button'+str(n),bg='grey',fg='white',font=('',15))
+  myButton.place(relx=Xo+diff*(n-1),rely=0.25,relwidth=0.2325,relheight=0.2)
+  buttonNumber=buttonNumber+1
+  print('count= ',n)
+
+
+mainButton=Button(mainFrame,text='Create Button',font=('',15),bg='#e0e0dc',fg='white',command=lambda:makeButton(buttonNumber))
+mainButton.place(relx=0.02,rely=0.02,relwidth=0.95,relheight=0.2)
+
+
+
+
+root.mainloop()
